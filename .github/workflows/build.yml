@@ -45,6 +45,10 @@ jobs:
           unzip -q Football_Arena_APK_fix_v2.zip -d build
           mv "build/Football Arena" build/Football_Arena
 
+      - name: Check requirements
+        run: |
+          grep 'requirements' build/Football_Arena/buildozer.spec
+          
       - name: Fix Android API
         run: |
           sed -i 's/^android.minapi *= *.*/android.minapi = 24/' build/Football_Arena/buildozer.spec
