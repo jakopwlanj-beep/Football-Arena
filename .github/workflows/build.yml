@@ -49,6 +49,11 @@ jobs:
         run: |
           grep 'requirements' build/Football_Arena/buildozer.spec
           
+      - name: Set Android architecture
+        run: |
+          sed -i 's/^android.archs *= *.*/android.archs = arm64-v8a/' build/Football_Arena/buildozer.spec
+          grep 'android.archs' build/Football_Arena/buildozer.spec
+          
       - name: Fix Android API
         run: |
           sed -i 's/^android.minapi *= *.*/android.minapi = 24/' build/Football_Arena/buildozer.spec
